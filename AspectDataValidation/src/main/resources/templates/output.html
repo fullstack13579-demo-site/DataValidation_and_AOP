@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta charset="ISO-8859-1">
+<title>Data Output</title>
+
+
+<style type="text/css">
+
+body{
+  background-color:#F2ECB5;
+  font-size:15px;
+  font-family:"times"
+}
+
+p{
+    font-size:35px;
+}  
+
+hr.line{
+     border:3px solid blue;
+}  
+
+.data-color{
+   color:blue;
+   font-weight:999;
+}
+
+
+</style>
+</head>
+
+<body> 
+      <br> 
+      <h1>Data Output</h1>
+      <br><br><br>
+      <hr class="line">   
+      <p>
+       valid name :  <span class="data-color" th:text="${personObject.name}"></span>
+       and telephone number:  <span class="data-color"  th:text="${personObject.telephoneNumber}" ></span>
+      </p> 
+      <hr class="line"> 
+</body>
+</html>

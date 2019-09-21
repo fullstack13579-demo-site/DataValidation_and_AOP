@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta charset="ISO-8859-1">
+<title>Input</title>
+
+<style type="text/css">
+
+ body{
+    background-color:#F2ECB5;
+    font-size:15px;
+    font-family:"times"
+ }
+        
+ table{
+    border:1px solid black;
+    background-color:#DCF0C3;
+    font-size:11px;   
+ }  
+  
+p{
+    font-size:22px;
+    margin: 5px 0px 5px 0px;
+}
+ 
+ input{
+    width:200px;
+    height:40px;  
+ }
+   
+ .text-size{
+    font-size:33px; 
+ }
+  
+hr.line{
+    border:1px solid blue;
+}  
+
+.position{
+    margin: 22px 15px 100px 450px;
+}
+
+.errorColor{
+    background-color:yellow;
+    color:red;
+    font-size:25px;
+ }
+  
+.aspectColor{
+    background-color:white;
+    color:black;
+    font-size:18px;
+    font-weight:999;
+ }
+
+.textColor{
+    background-color:yellow;
+    color:black;
+    font-size:25px;
+ }
+
+
+</style>
+</head>
+
+<body>
+<br><br><br>
+<h1>This application implements data validation and aspect oriented programming     </h1>                                                    
+<br>
+<hr class="line">
+<h2>Data Validation </h2>
+
+
+<p>If user gives name that is shorter 3 or longer  than 25 characters, then the following message is displayed :   </p>
+<p><span class="errorColor">min size=3 and max size=25</span></p>
+
+<p>If user gives telephone number that is lower than 444 characters, then the following message is displayed :   </p>
+<p><span class="errorColor">must be greater than or equal to 444</span></p>
+
+<hr class="line">
+<h2>Aspect Oriented Programming </h2>
+
+<p>After method <span class="textColor">  processDataFromInput </span>is performed from any class,then the following message is displayed on terminal:  </p>
+<p><span class="aspectColor"> triggered by processDataFromInput-method from any class </span> </p>
+<br>
+<p>After  any method is performed in <span class="textColor">PersonController </span>class,then the following messages are displayed on terminal:    </p>
+
+<p><span class="aspectColor">triggered by displayInput-method from PersonController class </span>  </p>
+or
+<p><span class="aspectColor"> triggered by processDataFromInput-method from PersonController class </span>  </p>
+
+<hr class="line">
+
+
+<body>
+
+  <div class="position" >
+	<form action="#"  th:action="@{/data}"    th:object="${person}" method="post">	
+	      <table>
+	           <tr>
+	                 <td class="text-size">Name :    </td>
+	                 <td> <input type ="text"  th:field="*{name}" /> </td>	         
+	                 <td th:if="${#fields.hasErrors('name')}"  th:errors="*{name}"  class="errorColor">name   error </td>
+	           </tr>          	          
+	            <tr>
+	                 <td class="text-size">Telephone number :    </td>
+	                 <td> <input type ="text"  th:field="*{telephoneNumber}" />  </td>	         
+	                 <td th:if="${#fields.hasErrors('name')}"  th:errors="*{telephoneNumber}"  class="errorColor">name   error </td>
+	            </tr>	           
+	            <tr>
+	                 <td>  <input type="submit" class="text-size"   value="submit"/></td>
+	            </tr>	          
+	      </table>
+	</form>
+ </div>
+
+</body>
+</html>
